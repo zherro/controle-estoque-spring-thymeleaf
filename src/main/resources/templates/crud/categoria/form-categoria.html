@@ -191,7 +191,7 @@
 
                     <li class="nav-header"><b>CATEGORIAS</b></li>
                     <li class="nav-item">
-                        <a href="/categorias/form-categoria" class="nav-link">
+                        <a href="pages/calendar.html" class="nav-link">
                             <i class="nav-icon far fa-calendar-alt"></i>
                             <p>
                                 Nova Categoria
@@ -223,12 +223,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Bem vindo!</h1>
+                        <h1 class="m-0" style="float: left;">Categorias</h1>
+                        <a href="/categorias/form-categoria" style="float: left;" class="ml-3 btn btn-info">Adicionar Caregotias</a>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active"></li>
+                            <li class="breadcrumb-item"><a href="#">Categorias</a></li>
+                            <li class="breadcrumb-item active">Listar</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -239,7 +240,34 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
+                <div class="row" >
+                    <div class="col col-12" >
 
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title" th:text=" ${emEdicao} ? 'Editar Categoria' : 'Adicionar Categoria'"></h3>
+                            </div>
+
+                            <form th:object="${categoria}"  method="post"  action="/categorias/salvar-categorias" >
+                                <div class="card-body">
+                                    <input type="hidden" id="id" th:field="*{id}">
+
+                                    <div class="form-group">
+                                        <label for="nome">Nome</label>
+                                        <input type="text" class="form-control" id="nome" th:field="*{name}">
+                                    </div>
+
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success">Salvar</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
 
 
             </div>
